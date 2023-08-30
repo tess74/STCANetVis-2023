@@ -1,0 +1,33 @@
+.PredictionPlotMain{
+    width: 100%;
+}
+
+.HeadingPredictionPlot{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.HeadNamePredictionPlot{
+    width: 100%;
+}
+
+.PlotSurroundsPredictionPlot{
+    padding: 15px 7px;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    width: 100%;
+}
+
+.HeatMapPlotSection{
+    width: calc(100% - 60px);
+    position: absolute;
+    top: 45px;
+    left: 40px;
+    height: calc(100% - 87px);
+}
+
+.ScattedPlotSection{
+    width: 100%;
+    z-index: 2;
+}
+/* 33BBC5 */

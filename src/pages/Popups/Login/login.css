@@ -1,0 +1,69 @@
+.loginMainPopup{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.loginPopupTopSect{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.logoLogin{
+    height: 100%;
+}
+
+.LoginContentHolder{
+    width: 90%;
+}
+
+.LoginHeaderMainPopup{
+    font-size: 1.8rem;
+    margin-bottom: 7px;
+}
+
+.LoginFormPopup{
+    width: 100%;
+}
+
+.buttonHolderLogin{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    margin-top: 10px;
+}
+
+.loginButtonPopup{
+    height: 50px;
+    width: 140px;
+    border-radius: 25px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.resendButtonHolder{
+    width: 100%;
+    margin-top: 5px;
+}
+
+.resendOTpLogin{
+    height: 26px;
+    border-radius: 13px;
+}
+
+.errorDivFormHolder{
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #ff3636;
+    text-align: center;
+}

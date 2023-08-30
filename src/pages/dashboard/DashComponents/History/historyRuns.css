@@ -1,0 +1,67 @@
+.HistoryRunsMain{
+    width: 100%;
+}
+
+.HistoryRunsContHolder{
+    width: 100%;
+}
+
+.HeaderSectHistoryRun{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.HeadNameHistoryRun{
+    width: 100%;
+}
+
+.HistoryRunsContentTable{
+    width: 100%;
+}
+
+.HistoryRunsTableHeader{
+    font-weight: 700 !important;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #8b8b8b !important;
+}
+
+.IDColumnHistoryRunsTableHeader{
+    color: #7c7c7c !important;
+    width: 50px;
+    text-align: center;
+    margin-right: 7px;
+}
+
+.TitleColumnHistoryRunsTableHeader{
+    color: #7c7c7c !important;
+    width: calc(100% - 800px);
+}
+
+.LastDateColumnHistoryRunsTableHeader{
+    color: #7c7c7c !important;
+    width: 130px;
+}
+
+.timeTakenColumnHistoryRunsTableHeader{
+    color: #7c7c7c !important;
+    width: 130px;
+    text-align: center;
+}
+
+.timeTakenSpecialHistoryRuns{
+    width: 90px;
+    text-align: center;
+}
+
+.HistoryRunsTableContent{
+    width: 100%;
+    background-color: #f0f0f0;
+    max-height: 500px;
+    border-radius: 5px;
+    padding: 7px 5px;
+    overflow-y: auto;
+    margin-top: 10px;
+}

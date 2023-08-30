@@ -1,0 +1,59 @@
+.RowHistoryRun{
+    width: 100%;
+    border-bottom: 1px solid #fff;
+}
+
+.RowHistoryRunContHolder{
+    width: 100%;
+    display: flex;
+    padding: 10px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.IconHolderDivRowHistRun{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.IconHolderDivRowHistRun span {
+    color: #3C2A21;
+}
+
+.TitleColumnRowHistoryRun{
+    width: calc(100% - 780px);
+}
+
+.TitleNameRowHistoryRun{
+    font-weight: 700;
+}
+
+.UploadedDateRowHistoryRun{
+    font-weight: 700;
+    color: #8b8b8b;
+    font-size: 15px;
+}
+
+.LastRunRowHistoryRun{
+    width: 130px;
+    font-size: 15px;
+}
+
+.runTimeRowHistoryRun{
+    width: 130px;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+}
+
+.runsNumRowHistRuns{
+    width: 90px;
+    text-align: center;
+}

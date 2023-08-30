@@ -1,0 +1,71 @@
+.AppMain{
+    width: 100%;
+    min-width: 100%;
+    min-height: 100vh;
+}
+
+.AllAppHolder{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.SidePanelAppMain{
+    width: 300px;
+    margin: 20px 30px 20px 15px;
+    height: 100%;
+}
+
+.StagnatSectionSideNavAppMain{
+    width: 300px;
+    z-index: 300;
+    margin-top: 60px;
+    left: -5px;
+}
+
+.GraphsNtopNavAppMain{
+    width: calc(100% - 360px);
+    margin: 20px 15px 20px 5px;
+}
+
+.TopNavAppMain{
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.TopNavSectionFixedPos{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: calc(100% - 0px);
+    z-index: 300;
+}
+
+
+.GraphsNContentSect{
+    width: 100%;
+    padding-top: 70px;
+}
+
+.BottomPerformanceOverViewAppMain{
+    width: 100%;
+    padding: 0 20px;
+    background-color: #fff;
+}
+
+
+.PopUpHolderDiv{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(19, 17, 38, 0.76);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 400;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: none;
+}

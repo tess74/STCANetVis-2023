@@ -1,0 +1,236 @@
+.MainSideNav{
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    background-color: rgb(242 242 242);
+}
+
+.ContentHolderSideNav{
+    width: 100%;
+}
+
+
+/* parameters settings */
+
+.ModelTrainSummarySideNav{
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.SummaryHeaderSideNav{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.OptimatzationSummmaryContHolder{
+    width: 100%;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.OptimazationSummaryHeader{
+    width: 100%;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.OptimazationRowDivSideNav{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+.titleParameterOptSideNav{
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+.OptimazationValueSizeNav{
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.searchSectionTopNav{
+    width: 100%;
+}
+
+.SearchDivHoldr{
+    border-radius: 23px;
+    height: 45px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #fbfbfb;
+    border: 1px solid #8b8b8b;
+}
+
+.iconHolderSerchTopNav{
+    height: 45px;
+    width: 45px;
+    padding-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconHolderSerchTopNav span{
+    color: #3C2A21;
+}
+
+.formSearchTopNav{
+    width: calc(100% - 50px);
+}
+
+.searchInputTopNav{
+    background-color: transparent;
+    border: none;
+    height: 40px;
+    width: 100%;
+    padding-right: 15px;
+}
+
+
+/* controls */
+.controlsSectionSideNav{
+    width: 100%;
+    margin-top: 50px;
+}
+
+.PlayPauseHderSideNav{
+    width: 100%;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.PlayPauseButtonGroupSideNav{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ForwardBackwardButtonsSideNav{
+    width: 60px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PlayPauseButtonSideNav{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 10px;
+    position: relative;
+}
+
+.PlayPauseButtonSideNav .material-symbols-rounded{
+    font-size: 54px;
+}
+.tooltipContHolder{
+    position: relative;
+}
+/* Tooltip text */
+.tooltipContHolder .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #8b8b8b;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    bottom: calc(100% + 3px);
+    left: 50%;
+    font-size: 13px;
+    margin-left: -60px;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltipContHolder:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .tooltipContHolder .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #8b8b8b transparent transparent transparent;
+  }
+
+/* data upload */
+.DatasetUploadSectHolderControls{
+    width: 100%;
+    margin-top: 40px;
+}
+
+.FormHeaderControls{
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.datasetUploadFormControls{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.AttachMentButtonControls{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AttachMentButtonControls span{
+    font-size: 20px;
+}
+
+.ProjectNameInputControls{
+    border: none;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: calc(100% - 70px);
+    display: block;
+    margin-right: 5px;
+    background-color: #fbfbfb;
+    border: 1px solid #8b8b8b;
+}
+
+.SubmitButtonProjectDetails{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SubmitButtonProjectDetails span{
+    font-size: 20px;
+}
+
+/* #3C2A21 */

@@ -1,0 +1,287 @@
+.topNavMain{
+    width: 100%;
+    background-color: #2E5894;
+    border-radius: 0px;
+    padding: 10px 20px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+
+.topNavContantHolder{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.leftSectTopNav{
+    width: 420px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.MenuButtnSecTopNav{
+    margin-right: 15px;
+}
+
+.MenyeButtonTopNav{
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.MenyeButtonTopNav span{
+    font-size: 30px;
+    color: #fff;
+}
+
+.ProjectNameNLogo{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.projectLogoSideNav{
+    width: 50px;
+}
+
+.ProjectName{
+    color: #ffffff !important;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.UserDetailsSectionsTopNav{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 20px;
+    border-right: #785442 solid 3px;
+    margin-right: 15px;
+}
+
+.userprofilePictTopNav{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: block;
+    margin-right: 7px;
+}
+
+.userTextDetailsHolder{
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+.userNameTopNav{
+    font-size: 18px;
+    font-weight: 700;
+    color: #3C2A21;
+}
+
+.userTitleTopNav{
+    font-size: 15px;
+    font-weight: 600;
+    color: #8b8b8b;
+}
+
+
+.middleSectTopNav{
+    width: calc(100% - 610px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* model topNav */
+.ModelNameDisplay{
+    display: flex;
+    align-items: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-right: 25px;
+}
+.ModelTitleDisp{
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.ModelNameDisp{
+    color: #bbb;
+
+}
+/* Epoch Sect */
+
+.calernderTopNav{
+    padding: 0;
+    border-radius: 7px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    overflow: hidden;
+}
+
+.iconCalendertopNav{
+    margin-right: 5px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    padding-left: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center
+}
+
+.DatevalueCalenderTopNav{
+    font-weight: 700;
+    padding: 10px 0;
+    padding-right: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #000;
+}
+
+.rightSectTopNav{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 180px;
+}
+
+
+.actionsTopNav{
+    width: 70px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.actionIconHolderTopNav{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actionIconHolderTopNav span {
+    font-size: 22px;
+    color: #3C2A21;
+}
+
+.activeActionTopNav{
+    border: 1px solid #61DAFB;
+}
+
+.activeActionTopNav span {
+    color: #61DAFB;
+}
+
+/* slider nav */
+.SlidePaneOverLay{
+    background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 100vw;
+    height: calc(100vh - 60px);
+    top: 60px;
+    z-index: 1000;
+    left: -110vw;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.SlidePaneOverLayOn {
+    left: 0;
+}
+
+.SidePanaleMain{
+    background-color: #fff;
+    height: 100%;
+}
+
+
+.slidePanelContentHolder{
+    width: 100%;
+    padding: 50px 10px;
+}
+
+
+.NavigationButtons{
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.SideNavigatorButtons{
+    width: 100%;
+    display: block;
+    background-color: transparent;
+    margin-bottom: 15px;
+}
+
+.SideNavigatorButtonContHolder{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.IconHolderNavigotorButton{
+    height: 32px;
+    width: 32px;
+    margin-right: 5px;
+}
+
+.IconHolderNavigotorButton span {
+    font-size: 30px;
+    color: #3C2A21;
+}
+
+
+
+.textHolderNaviButton {
+    font-size: 17px;
+    width: calc(100% - 62px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.arrowHolderActiveSideNavButton{
+    background-color: #3C2A21;
+    border-radius: 5px;
+    height: 25px;
+    width: 25px;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+
+/* active navs */
+.activeSideNav .textHolderNaviButton {
+    color: #000;
+    font-weight: 800;
+}
+.activeSideNav span{
+    color: #61DAFB;
+}
+
+.activeSideNav .arrowHolderActiveSideNavButton{
+    display: flex;
+}
