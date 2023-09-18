@@ -85,6 +85,36 @@ export const transformData = (inputData) =>{
   return transformedData;
 }
 
+export const transformDataMod2 = (inputData) =>{
+  let transformedData = [];
+
+  let prevMod1Values = null;
+
+  for (const entry of inputData) {
+      const mod1Values = entry.mod2;
+
+      const nn = prevMod1Values
+          ? prevMod1Values.reduce((sum, value) => sum + value, 0) / prevMod1Values.length
+          : Math.min(...mod1Values);
+
+      const hh = Math.max(...mod1Values);
+      const ll = Math.min(...mod1Values);
+      const avg = mod1Values.reduce((sum, value) => sum + value, 0) / mod1Values.length;
+
+      transformedData.push({
+          date: entry.x,
+          open: nn,
+          high: hh,
+          low: ll,
+          close: avg
+      });
+
+      prevMod1Values = mod1Values;
+  }
+
+  return transformedData;
+}
+
 // const inputData = [
 //   { mod1: [64, 745, 846, 846, 645, 746, 76, 645, 87, 94], mod2: [64, 745, 846, 846, 645, 746, 76, 645, 87, 94], x: 217 },
 //   { mod1: [64, 745, 846, 846, 645, 746, 76, 645, 87, 94], mod2: [64, 745, 846, 846, 645, 746, 76, 645, 87, 94], x: 247 }

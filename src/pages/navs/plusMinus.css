@@ -1,0 +1,44 @@
+.PlusMinusMain{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.NameRowValPlusMinus{
+    font-weight: 400;
+    font-size: 15px;
+    width: calc(100% - 140px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ValueChangePlusMinus{
+    width: 40px;
+    height: 25px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+.ChangerSecPlusMinus{
+    width: 90px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.PlusMinusButtn{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.PlusMinusButtn span{
+    font-size: 20px;
+}

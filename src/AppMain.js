@@ -5,7 +5,7 @@ import './appMain.css';
 import { insertDatasetInfo } from './redux/action/datasetsActs';
 import { activatePopup,deactivatePopup } from './redux/action/popupActions';
 // components
-import SideNav from './pages/navs/SideNav';
+// import SideNav from './pages/navs/SideNav';
 import TopNav from './pages/navs/TopNav';
 import HistoryRuns from './pages/dashboard/DashComponents/History/HistoryRuns';
 import Popup from './pages/Popups/Popup';
@@ -29,10 +29,10 @@ function AppMain() {
     return (
         <div className="AppMain ">
             <div className="AllAppHolder">
-                <div className="SidePanelAppMain">
-                    <div className="StagnatSectionSideNavAppMain">
+                <div className="SidePanelAppMain" style={{display: 'none'}}>
+                    {/* <div className="StagnatSectionSideNavAppMain">
                         <SideNav />
-                    </div>
+                    </div> */}
                 </div>
                 <div className="GraphsNtopNavAppMain">
                     <div className="TopNavAppMain">
@@ -45,7 +45,7 @@ function AppMain() {
                     </div>
                 </div>
             </div>
-            <div className="BottomPerformanceOverViewAppMain">
+            <div className="BottomPerformanceOverViewAppMain" style={{display : 'none'}}>
                 <HistoryRuns />
             </div>
             <div className="PopUpHolderDiv" style={popupState? { display: 'flex' }: {}}>

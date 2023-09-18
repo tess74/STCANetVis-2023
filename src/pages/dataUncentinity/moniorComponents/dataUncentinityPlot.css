@@ -13,4 +13,81 @@
 
 .PlotSurroundingsDataUncentinityMain{
     padding: 15px 7px;
+    min-height: 200px;
+    padding-bottom: 5px;
 }
+
+.KeyNControlsINFoCandleChart{
+    width: 100%;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.KeyNControlsCandleChart{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-bottom: 15px;
+}
+
+.KeySectCandleChart{
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 10px;
+    padding-right: 20px;   
+}
+
+.KeyHeaderCandleChart{
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.RowKeyTableCandleChart{
+    width: 100%;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.ShapeHolderRowCandleChart{
+    height: 25px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ShapeCandleChart{
+    height: 100%;
+    width: 18px;
+    background-color: gray;
+}
+
+.DiscRowCandleChart{
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+.ControlsCandleChart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.CandleZoomControlsButtons{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CandleZoomControlsButtons span{
+    font-size: 24px;
+    color: #515151;
+  }

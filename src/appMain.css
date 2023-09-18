@@ -2,6 +2,7 @@
     width: 100%;
     min-width: 100%;
     min-height: 100vh;
+    padding: 0 10px;
 }
 
 .AllAppHolder{
@@ -22,17 +23,18 @@
     width: 300px;
     z-index: 300;
     margin-top: 60px;
-    left: -5px;
+    left: 0px;
+    position: fixed;
 }
 
 .GraphsNtopNavAppMain{
-    width: calc(100% - 360px);
-    margin: 20px 15px 20px 5px;
+    width: calc(100% - 0px);
+    margin: 0px 15px 20px 5px;
 }
 
 .TopNavAppMain{
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 .TopNavSectionFixedPos{
@@ -45,7 +47,6 @@
 
 
 .GraphsNContentSect{
-    width: 100%;
     padding-top: 70px;
 }
 
@@ -68,4 +69,63 @@
     align-items: center;
     align-content: center;
     display: none;
+}
+
+.OpenKeyButtonHolder{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.GraphKeyToggleButton{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.GraphKeyToggleButton span{
+    font-size: 32px;
+    color: #3b5998;
+}
+
+.KeyHolderForShowAndHide{
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    width: calc(100% - 0px);
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.CloseButtonHolderNControls{
+    width: 100%;
+    height: 30px;
+}
+
+.GraphHideKey{
+    position: absolute;
+    top: -5px;
+    right: 0;
+    z-index: 2;
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.GraphHideKey span{
+    font-size: 32px;
+}
+.GraphHideKey span:hover{
+    color: #ff3636;
 }

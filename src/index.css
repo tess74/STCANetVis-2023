@@ -108,3 +108,44 @@ div{
   color: #61DAFB !important;
   font-weight: 500 !important;
 }
+
+.SpaceTopMargin{
+  margin-top: 20px;
+}
+
+.KeyIconHolderAll span {
+  font-size: 30px;
+  color: #515151;
+}
+
+.ButtonsNSliderALL{
+  width: 100px;
+  display: flex;
+  align-items: center;
+  align-content: space-between;
+  flex-wrap: wrap;
+}
+
+.SliderHolderAll{
+  width: 100%;
+  max-width: 200px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ValueSliderDisp{
+  width: 100%;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.SliderOnlyHolder{
+  width: 100px;
+}

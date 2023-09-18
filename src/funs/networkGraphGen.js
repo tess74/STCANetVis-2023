@@ -20,11 +20,27 @@ function createNetworkGraph(data) {
     }));
 
     const linksData = [];
+    const sizesLink = {};
+    const iterationLink = {};
+    const iterationlinkTag = {};
     nodesData.forEach((sourceNode, sourceIndex) => {
       nodesData.forEach((targetNode, targetIndex) => {
         if (sourceIndex !== targetIndex) {
           const weight = sourceNode.iterations / targetNode.size;
-          linksData.push({ source: sourceIndex, target: targetIndex, weight });
+          if (typeof (sizesLink[targetNode.size]) !== 'undefined') {
+                linksData.push({ source: sizesLink[targetNode.size], target: targetIndex, weight, typc: 'size' });
+          } else if (sourceNode.size === targetNode.size) {
+                sizesLink[sourceNode.size] = sourceNode.id;
+                linksData.push({ source: sizesLink[targetNode.size], target: targetIndex, weight, typc: 'size' });     
+          }
+
+          if (typeof (iterationLink[targetNode.iterations]) === 'undefined' && sourceNode.iterations === targetNode.iterations && typeof (iterationLink[sourceNode.size]) === 'undefined' && typeof (iterationLink[targetNode.size]) === 'undefined' && typeof (iterationlinkTag[targetNode.size]) === 'undefined' ) {
+                iterationLink[sourceNode.iterations] = sourceNode.id;
+                iterationLink[sourceNode.size] = sourceNode.size;
+                iterationlinkTag[targetNode.size] = targetNode.size;
+                linksData.push({ source: sourceNode.id, target: targetIndex, weight, typc: 'iterations' });
+          } 
+        
         }
       });
     });
@@ -35,18 +51,16 @@ function createNetworkGraph(data) {
     };
   }
 export const networkGrahGen = (siteData) => {
-    console.log(siteData);
     const data = createNetworkGraph(siteData);
     const r = 5;
+    const svgWidth = d3.select(".PlotHolderNetworkPlotGra").node().clientWidth;
     d3.select(".PlotHolderNetworkPlotGra").selectAll("*").remove();
     d3.select(".PlotHolderNetworkPlotGra").html('<div className="tooltipNetwork"></div>');
     const nodes = data.nodes;
     const links = data.links;
     /* SVG frame creation */
-    var w = 900,
-    h = 600;
-    // fbBlue = d3.rgb("#3b5998");
-    // fill = [fbBlue.brighter(2),fbBlue.brighter(),fbBlue,fbBlue.darker()];
+    const w = svgWidth,
+    h = svgWidth*0.53;
 
     var vis = d3.select(".PlotHolderNetworkPlotGra").append("svg:svg")
     .attr("width", w)
@@ -55,8 +69,8 @@ export const networkGrahGen = (siteData) => {
 
     /* Force paramettring */
     var force = d3.layout.force()
-    .charge(-300)
-    .linkDistance(300)
+    .charge(-60)
+    .linkDistance(40)
     .linkStrength(0.1)
     .size([w, h])
     .nodes(nodes)
@@ -69,18 +83,33 @@ export const networkGrahGen = (siteData) => {
     .enter()
     .append("line")
     .style("stroke", d => {
-        // return 'blue'
-        const sourceIterations = nodes[d.source.id].iterations;
-        const targetSize = nodes[d.target.id].size;
-        
-        if (sourceIterations > targetSize) {
-          return "#61DAFB"; // Color for links due to iterations
+        if (typeof (d.typc) !== 'undefined' && d.typc === 'size') {
+          return "grey";
         } else {
-          return "#3D2B1F"; // Color for links due to size
+          return "#61DAFB";
         }
-      })
-      .attr("stroke-width", d => d.weight)
-      .attr("stroke-opacity", 0.5)
+    })
+    .attr("x2", d=> {
+        const deltaX = d.target.x - d.source.x;
+        if (typeof (d.typc) !== 'undefined' && d.typc === 'size') {
+            return deltaX;
+        } else {
+            const newX2 = d.source.x + (deltaX * 0.2); 
+            return newX2;
+        }
+    })
+    .attr("y2", d=> {
+        const deltaY = d.target.y - d.source.y;
+        const newY2 = d.source.y + (deltaY * 0.2); // increase length for links with more
+        if (typeof (d.typc) !== 'undefined' && d.typc === 'size') {
+            return newY2;
+        } else {
+            return deltaY;
+            // return deltaY;
+        }
+    })
+    .attr("stroke-width", d => d.weight)
+    .attr("stroke-opacity", 0.5)
     .attr("class", "link");
 
     /*Node creation template */
@@ -91,9 +120,9 @@ export const networkGrahGen = (siteData) => {
     .attr("cx", function(d) { return d.x; }) //x
     .attr("cy", function(d) { return d.y; }) //y
     .attr("r", d => {
-        if (d.runtime > 7000) return 16;
-        else if (d.runtime > 5000) return 14;
-        else if (d.runtime > 3000) return 10;
+        if (d.runtime > 7000) return 18;
+        else if (d.runtime > 5000) return 15;
+        else if (d.runtime > 3000) return 12;
         else return 7;
       })
     .style("fill", d => {
@@ -103,8 +132,6 @@ export const networkGrahGen = (siteData) => {
     })
     .call(force.drag);
 
-    /*node.append("title")
-    .text(function(d) { return "User "+d.userID; });*/
 
     /* Start transition */
     vis.style("opacity", 1e-6)
@@ -114,13 +141,6 @@ export const networkGrahGen = (siteData) => {
 
     //Forces in action
     force.on("tick", function(e) {
-    //Clustering: Push odd/even nodes up/down, something alike for left/right
-        var k = 6 * e.alpha;
-        nodes.forEach(function(o, i) {
-            o.y += i & 1 ? k : -k;
-            o.x += i & 2 ? k : -k;
-        }); //clustering end
-        // Get items coords (then whole force's maths managed by D3)
         link.attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })

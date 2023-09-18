@@ -192,7 +192,7 @@
 
 /* slider nav */
 .SlidePaneOverLay{
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.05);
     position: fixed;
     width: 100vw;
     height: calc(100vh - 60px);
@@ -217,13 +217,13 @@
 
 .slidePanelContentHolder{
     width: 100%;
-    padding: 50px 10px;
+    padding: 10px 10px 0 10px;
 }
 
 
 .NavigationButtons{
     width: 100%;
-    margin-bottom: 60px;
+    margin-bottom: 15px;
 }
 
 .SideNavigatorButtons{
@@ -284,4 +284,12 @@
 
 .activeSideNav .arrowHolderActiveSideNavButton{
     display: flex;
+}
+
+.SideNavHolderHideShoe{
+    max-width: 340px;
+    left: -20px;
+    top: 230px;
+    z-index: 5000;
+    position: absolute;
 }

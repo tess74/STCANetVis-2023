@@ -8,6 +8,9 @@ import NetworkPlotGra from '../../NetworkPlor/NetworkPlotGra';
 function DashMainx() {
     return (
         <div className="DashMain">
+            <div className="NewtworkGraphContHolder">
+                <NetworkPlotGra />
+            </div>
             <div className="DashContHolder">
                 <div className="leftSectDash" >
                     <PredictPlotNControls />
@@ -15,9 +18,6 @@ function DashMainx() {
                 <div className="RightSectDash">
                     <DataPlotNHistory />
                 </div>
-            </div>
-            <div className="NewtworkGraphContHolder">
-                <NetworkPlotGra />
             </div>
         </div>
     );

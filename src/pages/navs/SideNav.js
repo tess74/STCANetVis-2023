@@ -10,6 +10,8 @@ import './sideNav.css';
 // actions
 import { activatePopup } from '../../redux/action/popupActions';
 import _ from 'lodash';
+import Stopwatch from './StopWatch';
+import PlusMinus from './PlusMinus';
 
 function SideNav() {
     const OpenFiles = () => {
@@ -24,6 +26,7 @@ function SideNav() {
         e.preventDefault();
         const formdata = new FormData();
         if (uploadCont.dataset === null || uploadCont.dataset === '' || uploadCont.project_name === '' || uploadCont.project_name.length < 5) {
+            console.log(uploadCont);
             dispatch(activatePopup('error', { head: 'Error!', text: 'Make sure all data are set and Project name length is more than 5 characters' })); 
             return false;  
         }
@@ -57,14 +60,11 @@ function SideNav() {
         } 
     }
 
-
-
     const [isConnected, setIsConnected] = useState(socket.connected);
-    const [fooEvents, setFooEvents] = useState([]);
     const [startEndTime, setStartEndTime] = useState({end: 'stopped', start: 'stopped'});
     const [activeNumDat, setActiveNumb] = useState(0);
     const [isrunning, setIsRunning] = useState(false);
-    const [cureeInf, setCurrEInf] = useState({mae: 0, acc: 0, epoch: 0})
+    const [cureeInf, setCurrEInf] = useState({mae: 0, acc: 0, epoch: 0, rsme: 0, desired: 'Auto Selected'})
     let saveData = {
         ensemb: [],
         netData: [],
@@ -74,6 +74,19 @@ function SideNav() {
         acc: 0.0,
         epoch: 0
     }
+    const settings = {
+        batches: 10,
+        iteration: 30
+    }
+    let startTime = '';
+
+    const changeSettingsFun = (val, variableName) =>{
+        if (typeof (val) !== 'number') {
+            val = 20;
+        }
+        settings[variableName] = val;
+    }
+
     const playModelRun = async () => {
         saveData = {
             ensemb: [],
@@ -84,11 +97,6 @@ function SideNav() {
             acc: 0.0,
             epoch: 0
         }
-        if (isrunning) {
-            setIsRunning(false);
-            socket.disconnect();
-            return 0;
-        }
         if (!isConnected) {
             dispatch(activatePopup('error', { head: 'Connection Error!', text: 'For some reasons you are not connected' }));
             return false;
@@ -98,19 +106,29 @@ function SideNav() {
             dispatch(activatePopup('error', { head: 'Error!', text: 'No active dataset, Please upload one or reload the page if you have done already' }));
             return false;
         }
+        if (isrunning) {
+            const pauseInfo = {
+                'info': 'pause'
+            };
+            socket.emit('pause_model', JSON.stringify(pauseInfo));
+            return 0;
+        }
+        
         const playData = {
+            ...settings,
             passcode: 'theresia_is_on_wechat_07_24_08_2023',
             project_id: activeData.dataset.dataset_id
         }
+        console.log(playData);
         setIsRunning(true);
-        console.log('connected');
-        socket.emit('play_model', JSON.stringify(playData))
+        socket.emit('play_model', JSON.stringify(playData));
     }
     
     const sortDataAndSave = (data) => {
         
         if (typeof (data.state) !== 'undefined' && data.state === 'starting') {
-            setStartEndTime({start: getCurrentDateTime(), end: 'running ....'})
+            startTime = getCurrentDateTime();
+            setStartEndTime({start: startTime, end: 'running ....'})
             saveData = {
                 ensemb: [],
                 netData: [],
@@ -122,11 +140,13 @@ function SideNav() {
             }
             return false;
         }
-        else if (typeof (data.state) !== 'undefined' && data.state === 'end') {
-            setStartEndTime({...startEndTime,  end: getCurrentDateTime(),});
+        else if (typeof (data.state) !== 'undefined' && (data.state === 'end' || data.state === 'ending' )) {
+            setIsRunning(false);
+            setStartEndTime({start: startTime, end: getCurrentDateTime()});
             return false;
-        } else if (typeof (data.state) !== 'undefined' && data.state === 'error') {
-            setStartEndTime({...startEndTime,  end: getCurrentDateTime(),});
+        } else if (typeof (data.state) !== 'undefined' && data.state !== 'success') {
+            setIsRunning(false);
+            setStartEndTime({start: startTime, end: getCurrentDateTime()});
             saveData = {
                 ensemb: [],
                 netData: [],
@@ -139,6 +159,17 @@ function SideNav() {
             if (typeof (data.data) === 'string') {
                 dispatch(activatePopup('error', { head: 'Error!', text: data.data }));
                 return false;
+            }
+            dispatch(activatePopup('error', { head: 'Error!', text: 'Operation has failed' }));
+        } else if (typeof (data.state) === 'undefined') {
+            saveData = {
+                ensemb: [],
+                netData: [],
+                predData: [],
+                len: 200,
+                mae: 0.0,
+                acc: 0.0,
+                epoch: 0
             }
             dispatch(activatePopup('error', { head: 'Error!', text: 'Operation has failed' }));
         }
@@ -154,9 +185,8 @@ function SideNav() {
         saveData.acc = data.data.acc;
         saveData.epoch = data.data.epoch;
         saveData.mae = data.data.mae;
-        setCurrEInf({ mae: data.data.mae, epoch: data.data.epoch, acc: data.data.acc})
+        setCurrEInf({ mae: data.data.mae, epoch: data.data.epoch, acc: data.data.acc, desired: data.data.desire, rsme: data.data.rmse})
         dispatch(updateChatsData(saveData));
-
     }
 
     const changeActiveData = (path) =>{
@@ -192,6 +222,17 @@ function SideNav() {
         }
     }
 
+    const handlePauseEvent = (value) => {
+        if (typeof (value.state) !== 'undefined' && value.state !== 'success') {
+            dispatch(activatePopup('error', { head: 'Error!', text: 'Unable to Stop the successfuly' }));
+            return 0;
+        } else if (typeof (value.state) === 'undefined'){
+            dispatch(activatePopup('error', { head: 'Error!', text: 'Unable to Stop the successfuly -2' }));
+            return 0
+        }
+        setIsRunning(false);
+    }
+
     const [isBlinking, setIsBlinking] = useState(false);
 
     useEffect(() => {
@@ -202,7 +243,7 @@ function SideNav() {
         return () => {
           clearTimeout(timeoutId);
         };
-      }, [isBlinking]);
+    }, [isBlinking]);
 
     useEffect(() => {
         function onConnect() {
@@ -215,18 +256,22 @@ function SideNav() {
 
         function onPlayModel(value) {
             sortDataAndSave(JSON.parse(value))
-            setFooEvents(previous => [...previous, value]);
-            console.log(fooEvents);
+        }
+
+        function onPauseModel(value) {
+            handlePauseEvent(JSON.parse(value));
         }
 
         socket.on('connect', onConnect);
         socket.on('disconnect', onDisconnect);
         socket.on('play_model', onPlayModel);
+        socket.on('pause_model', onPauseModel);
 
         return () => {
-        socket.off('connect', onConnect);
-        socket.off('disconnect', onDisconnect);
-        socket.off('play_model', onPlayModel);
+            socket.off('connect', onConnect);
+            socket.off('disconnect', onDisconnect);
+            socket.off('play_model', onPlayModel);
+            socket.off('pause_model', onPauseModel);
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -248,7 +293,7 @@ function SideNav() {
                                 Framework:
                             </div>
                             <div className="OptimazationValueSizeNav">
-                                Sea wave predictor
+                                STCANetViz
                             </div>
                         </div>
                         {/* helloe spacer */}
@@ -256,7 +301,7 @@ function SideNav() {
                             <div className="titleParameterOptSideNav">
                                 Dataset Name:
                             </div>
-                            <div className="OptimazationValueSizeNav">
+                            <div className="OptimazationValueSizeNav" style={{fontWeight: '600'}}>
                                 {
                                     !_.isEmpty(activeData)
                                     ? activeData.dataset.project_name
@@ -267,6 +312,39 @@ function SideNav() {
                         {/* helloe spacer */}
                         <div className="OptimazationRowDivSideNav">
                             <div className="titleParameterOptSideNav">
+                                Desired Value:
+                            </div>
+                            <div className="OptimazationValueSizeNav" style={{fontWeight: '600'}}>
+                                {
+                                    cureeInf.desired
+                                }
+                            </div>
+                        </div>
+                        {/* helloe spacer */}
+                        <div className="OptimazationRowDivSideNav">
+                            <PlusMinus
+                                low={20}
+                                high={400}
+                                changeFun={changeSettingsFun}
+                                variable="batches"
+                                name="Batches:"
+                            />
+                        </div>
+                        {/* helloe spacer */}
+                        <div className="OptimazationRowDivSideNav" style={{marginTop: '5px'}}>
+                            <PlusMinus
+                                low={20}
+                                high={200}
+                                changeFun={changeSettingsFun}
+                                variable="iteration"
+                                name="Max Iterations:"
+                            />
+                        </div>
+                        {/* <div className="OptimazationSummaryHeader SpaceTopMargin">
+                            OUTPUT
+                        </div>
+                        <div className="OptimazationRowDivSideNav">
+                            <div className="titleParameterOptSideNav">
                                 Start Time:
                             </div>
                             <div className="OptimazationValueSizeNav">
@@ -275,7 +353,6 @@ function SideNav() {
                                 }
                             </div>
                         </div>
-                        {/* helloe spacer */}
                         <div className="OptimazationRowDivSideNav">
                             <div className="titleParameterOptSideNav">
                                 End Time:
@@ -286,16 +363,14 @@ function SideNav() {
                                 }
                             </div>
                         </div>
-                        {/* helloe spacer */}
                         <div className="OptimazationRowDivSideNav">
                             <div className="titleParameterOptSideNav">
-                                Metric:
+                                R_square:
                             </div>
                             <div className="OptimazationValueSizeNav">
-                                Accuracy {cureeInf.acc }
+                                {cureeInf.acc }
                             </div>
                         </div>
-                        {/* helloe spacer */}
                         <div className="OptimazationRowDivSideNav">
                             <div className="titleParameterOptSideNav">
                                 MAE:
@@ -306,30 +381,22 @@ function SideNav() {
                                 }
                             </div>
                         </div>
-                        {/* helloe spacer */}
                         <div className="OptimazationRowDivSideNav">
                             <div className="titleParameterOptSideNav">
-                                Total iterations:
+                                RMSE:
                             </div>
                             <div className="OptimazationValueSizeNav">
                                 {
-                                    cureeInf.epoch
+                                    cureeInf.rsme
                                 }
                             </div>
-                        </div>
+                        </div> */}
                         {/* helloe spacer */}
                     </div>
                 </div>
                 <div className="searchSectionTopNav">
                     <div className="SearchDivHoldr">
-                        <div className="iconHolderSerchTopNav">
-                            <span className="material-symbols-outlined">
-                                search
-                            </span>
-                        </div>
-                        <form className="formSearchTopNav">
-                            <input className="searchInputTopNav" name="search" placeholder="Search Dataset" />
-                        </form>
+                        <Stopwatch isRunning={isrunning} />
                     </div>
                 </div>
                 <div className="controlsSectionSideNav">
@@ -363,14 +430,14 @@ function SideNav() {
                         Upload Dataset
                     </div>
                     <form className="datasetUploadFormControls" onSubmit={(e) => formSubmitUpload(e)}>
-                        <input style={{ display: 'none' }}  type="file" ref={imgInpt} name="image1" accept=".csv" onChange={(e) => setUploadCont({...uploadCont, dataset: e.target.files[0]})} />
+                        <input style={{ display: 'none' }}  type="file" ref={imgInpt} name="image1" accept=".csv" onChange={(e) => setUploadCont({...uploadCont, project_name: typeof (e.target.files[0]) !== 'undefined' ? e.target.files[0].name : '', dataset: e.target.files[0]})} />
                         <button type="button" className="AttachMentButtonControls tooltipContHolder" onClick={() => OpenFiles()}>
                             <span className="material-symbols-outlined">
                                 attach_file
                             </span>
                             <span className="tooltiptext" >Select Dataset</span>
                         </button>
-                        <input type="text" className="ProjectNameInputControls lightGrayColor" placeholder="Dataset Name" onChange={(ec => setUploadCont({...uploadCont, project_name: ec.target.value}))} />
+                        <input type="text" placeholder="Dataset name" className="ProjectNameInputControls lightGrayColor" value={uploadCont.dataset !== null ? uploadCont.dataset.name : ''} onChange={(ec => setUploadCont({...uploadCont, project_name: ec.target.value}))} />
                         <button type="submit" className="SubmitButtonProjectDetails tooltipContHolder">
                             <span className="material-symbols-outlined">
                                 send
