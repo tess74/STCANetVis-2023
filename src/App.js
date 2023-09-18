@@ -20,7 +20,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/predict',
-        element: <PredictionPlot />
+        element: <PredictionPlot statx={'full'} />
       },
       {
         path: '/network',
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/data_unce',
-        element: <DataUncentinityPlot />
+        element: <DataUncentinityPlot statx={'full'} />
       }
     ]
       

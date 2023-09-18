@@ -9,7 +9,10 @@ import * as d3 from 'd3-v6';
 export function createDensityContourWithAxes(data, len, dispval) {
     const margin = { top: 20, right: 70, bottom: 30, left: 40 };
     d3.select(".ScattedPlotSection").selectAll("*").remove();
-    const svgWidth = d3.select(".ScattedPlotSection").node().clientWidth;
+    let svgWidth = d3.select(".ScattedPlotSection").node().clientWidth;
+    if (svgWidth > 1000) {
+      svgWidth = 1000;
+    }
     const svgHeight = svgWidth*0.43;
     const width = svgWidth - (margin.left + margin.right + 30);
     const height = svgHeight - (margin.top + margin.bottom + 10);

@@ -3,8 +3,14 @@ import { useSelector } from 'react-redux';
 import './networkPlotGre.css';
 import { networkGrahGen } from '../../funs/networkGraphGen';
 
-function NetworkPlotGra() {
-    const [showHideKey, setShowHideKey] = useState(false);
+function NetworkPlotGra({
+    statx
+}) {
+    let initKey = false;
+    if (statx === 'full') {
+        initKey = true;
+    }
+    const [showHideKey, setShowHideKey] = useState(initKey);
     const DataChge =  useSelector((state) => state.DataSetReduc);
     useEffect(() => {
         if (typeof (DataChge.chatsData.netData) !== 'undefined') {

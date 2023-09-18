@@ -4,7 +4,10 @@ import { transformData, transformDataMod2 } from './SharedFun';
   // Create a function to render the candlestick chart
 const renderCandlestickChart = (data, containerId, dispVal) => {
     const margin = { top: 20, right: 30, bottom: 60, left: 50 };
-    const svgWidth = d3.select(`.${containerId}`).node().clientWidth;
+    let svgWidth = d3.select(`.${containerId}`).node().clientWidth;
+    if (svgWidth > 1000) {
+      svgWidth = 1000;
+    }
     const svgHeight = svgWidth*0.43;
     const width = svgWidth - margin.left - margin.right;
     const height = svgHeight - margin.top - margin.bottom;

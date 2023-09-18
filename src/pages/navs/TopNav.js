@@ -410,7 +410,7 @@ function TopNav() {
                                                 monitoring
                                             </span>
                                         </div>
-                                        <div className="textHolderNaviButton">Ensemble Data Visualization</div>
+                                        <div className="textHolderNaviButton">Uncertainty View </div>
                                         <div className="arrowHolderActiveSideNavButton">
                                             <span className="material-symbols-outlined">
                                                 arrow_forward_ios

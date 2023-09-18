@@ -16,7 +16,7 @@ function DashMainx() {
                     <PredictPlotNControls />
                 </div>
                 <div className="RightSectDash">
-                    <DataPlotNHistory />
+                    <DataPlotNHistory  />
                 </div>
             </div>
         </div>

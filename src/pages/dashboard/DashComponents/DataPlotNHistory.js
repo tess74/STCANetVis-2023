@@ -7,7 +7,7 @@ function DataPlotNHistory() {
     return (
         <div className="DataPlotNHistoryMain">
             <div className="DataPlotDTHist">
-                <DataUncentinityPlot />
+                <DataUncentinityPlot statx={'small'} />
             </div>
         </div>
     );

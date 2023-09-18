@@ -5,9 +5,15 @@ import { stickGeneRator } from '../../../funs/candleStickGene';
 import { Slider } from '@mui/material';
 import './dataUncentinityPlot.css';
 
-function DataUncentinityPlot() {
+function DataUncentinityPlot({
+    statx
+}) {
     const [dispval, setDispval] = useState(50);
-    const [showHideKey, setShowHideKey] = useState(false);
+    let initKey = false;
+    if (statx === 'full') {
+        initKey = true;
+    }
+    const [showHideKey, setShowHideKey] = useState(initKey);
     const [dispText, setDispText] = useState('STCANet');
     const DataChge =  useSelector((state) => state.DataSetReduc);
     let Tlen = 0;
