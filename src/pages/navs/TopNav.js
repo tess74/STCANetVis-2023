@@ -348,9 +348,11 @@ function TopNav() {
                                 settings_input_antenna
                             </span>
                         </div>
-                        <div className="actionIconHolderTopNav lightGrayColor">
-                            <img src={git} className="gitIconActionIcons" alt="github icon" />
-                        </div>
+                        <a href="https://github.com/tess74/STCANetVis-2023">
+                            <div className="actionIconHolderTopNav lightGrayColor">
+                                <img src={git} className="gitIconActionIcons" alt="github icon" />
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

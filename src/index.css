@@ -29,6 +29,7 @@ a{
 select{
   -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     padding-right: 25px;
     background: url(data:image/gif;base64,R0lGODlhCwALAJEAAAAAAP///xUVFf///yH5BAEAAAMALAAAAAALAAsAAAIPnI+py+0/hJzz0IruwjsVADs=);
     background-repeat: repeat;
@@ -57,9 +58,9 @@ button{
 }
 
 button:hover{
-  transform: scale(1.03, 1);
   -webkit-transform: scale(1.03,1);
   -moz-transform: scale(1.03,1);
+  transform: scale(1.03, 1);
 }
 
 body {
