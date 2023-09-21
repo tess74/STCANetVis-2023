@@ -50,6 +50,24 @@ function PredictionPlot() {
                 <h3 className="HeadNamePredictionPlot">
                     Prediction Visualization 
                 </h3>
+                <div className="ButtonsNSliderALL">
+                    <div className="ControlsPredictions">
+                        <Link to="/">
+                            <button style={{marginRight: '10px', backgroundColor: 'transparent', border: '1px solid #61DAFB'}} className="ZoomControlsButtons" type="button">
+                                <span className="material-symbols-rounded" style={{ color: '#000' }}>
+                                    zoom_in_map
+                                </span>
+                            </button>
+                        </Link>
+                        <Link to="/predict">
+                            <button className="ZoomControlsButtons" type="button">
+                                <span className="material-symbols-rounded">
+                                    zoom_out_map
+                                </span>
+                            </button>
+                        </Link>
+                    </div>
+                </div>
             </div>
             <div className="PlotSurroundsPredictionPlot">
                 <div className="HeatMapPlotSection">
@@ -134,39 +152,6 @@ function PredictionPlot() {
                                 <div className="KeyShapeDiscrbePrediction">
                                     Areas with very few or no predicted values
                                 </div>
-                            </div>
-                        </div>
-                        <div className="ButtonsNSliderALL">
-                            {/* <div className="SliderHolderAll">
-                                <div className="ValueSliderDisp">
-                                    {
-                                        dispText
-                                    }
-                                </div>
-                                <Slider
-                                    aria-label="Restricted values"
-                                    defaultValue={50}
-                                    step={null}
-                                    valueLabelDisplay="off"
-                                    marks={marks}
-                                    onChange={ChangeGraphState}
-                                />
-                            </div> */}
-                            <div className="ControlsPredictions">
-                                <Link to="/">
-                                    <button style={{marginRight: '10px', backgroundColor: 'transparent', border: '1px solid #61DAFB'}} className="ZoomControlsButtons" type="button">
-                                        <span className="material-symbols-rounded" style={{ color: '#000' }}>
-                                            zoom_in_map
-                                        </span>
-                                    </button>
-                                </Link>
-                                <Link to="/predict">
-                                    <button className="ZoomControlsButtons" type="button">
-                                        <span className="material-symbols-rounded">
-                                            zoom_out_map
-                                        </span>
-                                    </button>
-                                </Link>
                             </div>
                         </div>
                     </div>

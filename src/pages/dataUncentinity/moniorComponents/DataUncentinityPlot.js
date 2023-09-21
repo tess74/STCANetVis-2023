@@ -60,6 +60,24 @@ function DataUncentinityPlot({
                 <h3 className="HeadNameDataUncentinity">
                     Uncertainty of Ensemble Data Visualization
                 </h3>
+                <div className="ButtonsNSliderALL">
+                    <div className="ControlsCandleChart">
+                        <Link to="/">
+                            <button style={{marginRight: '10px', backgroundColor: 'transparent', border: '1px solid #61DAFB'}} className="CandleZoomControlsButtons" type="button">
+                                <span className="material-symbols-rounded" style={{ color: '#000' }}>
+                                    zoom_in_map
+                                </span>
+                            </button>
+                        </Link>
+                        <Link to="/data_unce">
+                            <button className="CandleZoomControlsButtons" type="button">
+                                <span className="material-symbols-rounded">
+                                    zoom_out_map
+                                </span>
+                            </button>
+                        </Link>
+                    </div>
+                </div>
             </div>
             <div className="PlotSurroundingsDataUncentinityMain">
                 
@@ -137,25 +155,6 @@ function DataUncentinityPlot({
                                 </div>
                             </div>
                         </div>
-                        <div className="ButtonsNSliderALL">
-                            <div className="ControlsCandleChart">
-                                <Link to="/">
-                                    <button style={{marginRight: '10px', backgroundColor: 'transparent', border: '1px solid #61DAFB'}} className="CandleZoomControlsButtons" type="button">
-                                        <span className="material-symbols-rounded" style={{ color: '#000' }}>
-                                            zoom_in_map
-                                        </span>
-                                    </button>
-                                </Link>
-                                <Link to="/data_unce">
-                                    <button className="CandleZoomControlsButtons" type="button">
-                                        <span className="material-symbols-rounded">
-                                            zoom_out_map
-                                        </span>
-                                    </button>
-                                </Link>
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
             </div>
