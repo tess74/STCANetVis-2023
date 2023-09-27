@@ -76,6 +76,40 @@
     height: 50px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.KeySankeyGraphHolder{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+    margin-bottom: 13px;
+}
+
+.keyRowSankeyGraph{
+    width: -moz-fit-content;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.colorHolderSankey{
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    margin-right: 5px;
+    background-color: #ff3636;
+}
+
+.predictGraphOpenKeyHolder{
+    width: calc(45% + 50px);
+    margin-left: auto;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .GraphKeyToggleButton{
@@ -101,7 +135,6 @@
     width: calc(100% - 0px);
     padding: 10px;
     border-radius: 10px;
-    background-color: #fff;
 }
 
 .CloseButtonHolderNControls{

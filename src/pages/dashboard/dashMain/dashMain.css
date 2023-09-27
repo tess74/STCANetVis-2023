@@ -7,23 +7,28 @@
 }
 
 .DashContHolder{
-    width: 45%;
-    min-width: 350px;
+    width: 100%;
+    min-width: 500px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .leftSectDash{
     /* width: calc(50% - 7px); */
-    width: 100%;
+    width: 50%;
     min-width: 350px;
 }
 
 .RightSectDash{
     /* width: calc(50% - 7px); */
-    width: 100%;
+    width: 50%;
     min-width: 350px;
 }
 
 .NewtworkGraphContHolder{
-    width: 53%;
+    width: 100%;
     /* padding: 10px 0; */
 }

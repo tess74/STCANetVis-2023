@@ -7,7 +7,7 @@ function PredictPlotNControls() {
     return (
         <div className="PredictNControlsMain">
             <div className="PrectionPlotHolderPredNControl">
-                <PredictionPlot statx={'full'} />
+                <PredictionPlot statx={'small'} />
             </div>
         </div>
     );

@@ -24,14 +24,14 @@ function NetworkPlotGra({
                 Scalability Visualization 
             </h3>
             <div className="KeySectionHolderWithPosAb">
-                <button onClick={() => setShowHideKey(true)} type="button" className="GraphKeyToggleButtonNetGraph">
+                <button  onClick={() => setShowHideKey(true)} type="button" className="GraphKeyToggleButtonNetGraph">
                     <span className="material-symbols-outlined">
                         info
                     </span>
                 </button>
                 <div className="KeyNetworgraph" style={showHideKey ? {display: 'block'} : {}}>
                     <div className="KeyIconHolderAll" style={{paddingLeft: '9px'}}>
-                        <button onClick={() => setShowHideKey(false)} type="button" className="GraphHideKeyNetGraph">
+                        <button style={initKey ? {display: 'none'} : {}} onClick={() => setShowHideKey(false)} type="button" className="GraphHideKeyNetGraph">
                             <span className="material-symbols-outlined">
                                 close
                             </span>

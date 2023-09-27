@@ -83,7 +83,7 @@ svg line.link {
     right: 60px;
     padding: 10px;
     z-index: 2;
-    background-color: #f0f0f0;
+    background-color: #fff;
     border-radius: 10px;
     display: none;
 }
@@ -147,6 +147,6 @@ svg line.link {
 }
 
 .KeyDiscrbNetwork{
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;   
 }

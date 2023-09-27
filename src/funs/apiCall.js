@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const sendToBackendPost = async (link, data) => {
     let ansbck;
-    ansbck = await axios.post('https://scanet.api.brentles.co.tz'+link, data, {
+    ansbck = await axios.post(''+link, data, {
         headers: {
             'content-type': 'text/json',
         },
@@ -21,3 +21,5 @@ export const sendToBackendPost = async (link, data) => {
     }
     return ansbck;
 }
+
+// https://scanet.api.brentles.co.tz

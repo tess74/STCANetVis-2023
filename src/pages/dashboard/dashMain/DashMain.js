@@ -9,14 +9,14 @@ function DashMainx() {
     return (
         <div className="DashMain">
             <div className="NewtworkGraphContHolder">
-                <NetworkPlotGra />
+                <PredictPlotNControls />
             </div>
             <div className="DashContHolder">
                 <div className="leftSectDash" >
-                    <PredictPlotNControls />
+                    <DataPlotNHistory  />
                 </div>
                 <div className="RightSectDash">
-                    <DataPlotNHistory  />
+                    <NetworkPlotGra statx={'small'} />
                 </div>
             </div>
         </div>

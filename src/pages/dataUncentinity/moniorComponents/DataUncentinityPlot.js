@@ -108,7 +108,7 @@ function DataUncentinityPlot({
             </div>
             <div className="KeyHolderForShowAndHide" style={!showHideKey ? {display: 'none'} : {}}>
                 <div className="CloseButtonHolderNControls">
-                    <button onClick={() => setShowHideKey(false)} type="button" className="GraphHideKey">
+                    <button style={initKey ? {display: 'none'} : {}} onClick={() => setShowHideKey(false)} type="button" className="GraphHideKey">
                         <span className="material-symbols-outlined">
                             close
                         </span>

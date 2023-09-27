@@ -3,7 +3,7 @@ import { transformData, transformDataMod2 } from './SharedFun';
 
   // Create a function to render the candlestick chart
 const renderCandlestickChart = (data, containerId, dispVal) => {
-    const margin = { top: 20, right: 30, bottom: 60, left: 50 };
+    const margin = { top: 20, right: 30, bottom: 65, left: 50 };
     let svgWidth = d3.select(`.${containerId}`).node().clientWidth;
     if (svgWidth > 1000) {
       svgWidth = 1000;
@@ -80,7 +80,7 @@ const renderCandlestickChart = (data, containerId, dispVal) => {
       .call(d3.axisBottom(x))
       .selectAll("text")
     .style("text-anchor", "end")
-    .attr("font-size", "12px")
+    .attr("font-size", "14px")
     .attr("dx", "-.8em")
     .attr("dy", ".15em")
     .attr("transform", "rotate(-65)");

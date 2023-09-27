@@ -24,11 +24,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/network',
-        element: <NetworkPlotGra />
+        element: <div className="FullPageMainApp"><div className="LeftSectionApp"></div> <div className="RightSectionApp"><NetworkPlotGra statx={'full'} /></div></div>
       },
       {
         path: '/data_unce',
-        element: <DataUncentinityPlot statx={'full'} />
+        element: <div className="FullPageMainApp"><div className="LeftSectionApp"></div> <div className="RightSectionApp"><DataUncentinityPlot statx={'full'} /></div></div>
       }
     ]
       
