@@ -17,19 +17,25 @@ function NetworkPlotGra({
             networkGrahGen(DataChge.chatsData.netData);
         }
     }, [DataChge.chatsData.netData])
-
+    let nomStyles = {display: 'flex'};
+    if (initKey) {
+        nomStyles = {
+            display: 'flex',
+            position: 'relative'
+        }
+    }
     return (
         <div className="NetworkPlotGraMain">
             <h3 className="NetworkPlotGRaHeader">
                 Scalability Visualization 
             </h3>
-            <div className="KeySectionHolderWithPosAb">
-                <button  onClick={() => setShowHideKey(true)} type="button" className="GraphKeyToggleButtonNetGraph">
+            <div className="KeySectionHolderWithPosAb" style={initKey ? {height: 'auto'} : {}}>
+                <button style={initKey ? {display: 'none'} : {}}  onClick={() => setShowHideKey(true)} type="button" className="GraphKeyToggleButtonNetGraph">
                     <span className="material-symbols-outlined">
                         info
                     </span>
                 </button>
-                <div className="KeyNetworgraph" style={showHideKey ? {display: 'block'} : {}}>
+                <div className="KeyNetworgraph" style={showHideKey ? nomStyles : {}}>
                     <div className="KeyIconHolderAll" style={{paddingLeft: '9px'}}>
                         <button style={initKey ? {display: 'none'} : {}} onClick={() => setShowHideKey(false)} type="button" className="GraphHideKeyNetGraph">
                             <span className="material-symbols-outlined">

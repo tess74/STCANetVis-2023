@@ -78,42 +78,37 @@ function DataUncentinityPlot({
                         </Link>
                     </div>
                 </div>
+                <div className="SliderLocTopDAta">
+                    <div className="SliderHolderAll" style={{right: '-50px'}}>
+                        <div className="ValueSliderDisp">
+                            {
+                                dispText
+                            }
+                        </div>
+                        <div className="SliderOnlyHolder">
+                            <Slider
+                                aria-label="Restricted values"
+                                defaultValue={50}
+                                step={null}
+                                valueLabelDisplay="off"
+                                marks={marks}
+                                onChange={ChangeGraphState}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="PlotSurroundingsDataUncentinityMain">
                 
             </div>
-            <div className="OpenKeyButtonHolder">
+            <div className="OpenKeyButtonHolder" style={showHideKey ? {display: 'none'} : {}}>
                 <button onClick={() => setShowHideKey(true)} type="button" className="GraphKeyToggleButton">
                     <span className="material-symbols-outlined">
                         info
                     </span>
                 </button>
-                <div className="SliderHolderAll">
-                    <div className="ValueSliderDisp">
-                        {
-                            dispText
-                        }
-                    </div>
-                    <div className="SliderOnlyHolder">
-                        <Slider
-                            aria-label="Restricted values"
-                            defaultValue={50}
-                            step={null}
-                            valueLabelDisplay="off"
-                            marks={marks}
-                            onChange={ChangeGraphState}
-                        />
-                    </div>
-                </div>
             </div>
-            <div className="KeyHolderForShowAndHide" style={!showHideKey ? {display: 'none'} : {}}>
-                <div className="CloseButtonHolderNControls">
-                    <button style={initKey ? {display: 'none'} : {}} onClick={() => setShowHideKey(false)} type="button" className="GraphHideKey">
-                        <span className="material-symbols-outlined">
-                            close
-                        </span>
-                    </button>
-                </div>
+            <div className="KeyHolderForShowAndHide" style={!showHideKey ? {display: 'none'} : {top: '-10px'}}>
                 <div className="KeyNControlsINFoCandleChart">
                     <div className="KeyNControlsCandleChart">
                         <div className="KeySectCandleChart">
@@ -156,6 +151,13 @@ function DataUncentinityPlot({
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="CloseButtonHolderNControls">
+                    <button style={initKey ? {display: 'none'} : {}} onClick={() => setShowHideKey(false)} type="button" className="GraphHideKey">
+                        <span className="material-symbols-outlined">
+                            close
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>

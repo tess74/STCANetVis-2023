@@ -85,6 +85,9 @@ svg line.link {
     z-index: 2;
     background-color: #fff;
     border-radius: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
     display: none;
 }
 
@@ -115,6 +118,9 @@ svg line.link {
 }
 .SizeKeySectionNetwork{
     width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
 }
 
 .rowNetworkGraph{
@@ -126,7 +132,10 @@ svg line.link {
 }
 
 .NRowNetworkGraphKey{
-    width: 100%;
+    width: 50%;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    margin-top: 10px;
     margin-bottom: 5px;
     display: flex;
     justify-content: flex-start;

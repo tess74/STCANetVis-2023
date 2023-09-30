@@ -44,8 +44,8 @@
     border-radius: 15px;
     background-color: #f9f9f9;
     width: 100%;
-    min-height: 300px;
-    padding-bottom: 5px;
+    min-height: 200px;
+    padding-bottom: 15px;
 }
 
 
@@ -163,7 +163,7 @@
 .GraphInfoPredictChart{
     font-size: 12px;
     color: #414141;
-    margin-top: 20px;
+    margin-top: 10px;
     width: 90%;
 }
 
@@ -172,13 +172,14 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    margin-top: 10px;
 }
 
 .KeyPrediction{
   padding: 10px;
   border-radius: 10px;
   padding-right: 20px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .keyHeaderPredictions{
@@ -196,10 +197,11 @@
 
 .ShapeHolderKeyPrediction{
   height: 25px;
-  width: 40px;
+  width: 25px;
   display: flex;
   /* justify-content: center; */
   align-items: center;
+  margin-left: 5px;
 }
 
 .NShapeKeyPrediction{
@@ -207,17 +209,15 @@
   height: 10px;
   background-color: #90EE8F;
   border-radius: 50%;
-  margin-left: 10px;
 }
 
 .ShapeKeyPrediction{
-  transform:translate(-50%,50%);
-	border-radius: 80% 20% 32% 68% / 58% 22% 78% 42% ;
-	height:25px;
-	width:25px;
-  position: absolute;
-  top:-12px;
-	left: 13px;
+  /* transform:translate(-50%,50%);
+	border-radius: 80% 20% 32% 68% / 58% 22% 78% 42% ; */
+  border-radius: 50%;
+	height:10px;
+	width:10px;
+  margin-right: 6px;
 	background: black;
 }
 
@@ -246,3 +246,9 @@
   color: #515151;
 }
 /* 33BBC5 */
+
+.SliderNewLocHolder{
+  position: absolute;
+  top: -60px;
+  right: 30px;
+}

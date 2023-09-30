@@ -292,6 +292,25 @@ function PredictionPlot({
 
                     </div>
                     <div className="ScatteredPlotHolder">
+                        <div className="SliderNewLocHolder">
+                            <div className="SliderHolderAll">
+                                <div className="ValueSliderDisp">
+                                    {
+                                        dispText
+                                    }
+                                </div>
+                                <div className="SliderOnlyHolder">
+                                    <Slider
+                                        aria-label="Restricted values"
+                                        defaultValue={50}
+                                        step={null}
+                                        valueLabelDisplay="off"
+                                        marks={marks}
+                                        onChange={ChangeGraphState}
+                                    />
+                                </div>
+                            </div>
+                        </div>
                         <div className="ScattedPlotSection">
                             {/* don't delete */}
                         </div>
@@ -340,39 +359,15 @@ function PredictionPlot({
                             </div>
                         </div>
                     </div>
-                    <div className="predictGraphOpenKeyHolder">
+                    <div style={showHideKey ? {display: 'none'} : {}} className="predictGraphOpenKeyHolder">
                         <button onClick={() => setShowHideKey(true)} type="button" className="GraphKeyToggleButton">
                             <span className="material-symbols-outlined">
                                 info
                             </span>
                         </button>
-                        <div className="SliderHolderAll">
-                            <div className="ValueSliderDisp">
-                                {
-                                    dispText
-                                }
-                            </div>
-                            <div className="SliderOnlyHolder">
-                                <Slider
-                                    aria-label="Restricted values"
-                                    defaultValue={50}
-                                    step={null}
-                                    valueLabelDisplay="off"
-                                    marks={marks}
-                                    onChange={ChangeGraphState}
-                                />
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <div className="KeyHolderForShowAndHide" style={!showHideKey ? {display: 'none'} : { width: 'calc(45% + 50px)', right: '0', marginLeft: 'auto', top: '20px'}}>
-                    <div className="CloseButtonHolderNControls">
-                        <button style={initKey ? {display: 'none'} : {}} onClick={() => setShowHideKey(false)} type="button" className="GraphHideKey">
-                            <span className="material-symbols-outlined">
-                                close
-                            </span>
-                        </button>
-                    </div>
+                <div className="KeyHolderForShowAndHide" style={!showHideKey ? {display: 'none'} : { width: 'calc(45% + 50px)', right: '0', marginLeft: 'auto', top: '-40px'}}>
                     <div className="KeyNInfoNControls">
                         <div className="KeyPrediction">
                             <div className="KeyIconHolderAll" style={{display: 'none'}}>
@@ -413,6 +408,13 @@ function PredictionPlot({
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="CloseButtonHolderNControls">
+                        <button style={initKey ? {display: 'none'} : {}} onClick={() => setShowHideKey(false)} type="button" className="GraphHideKey">
+                            <span className="material-symbols-outlined">
+                                close
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>

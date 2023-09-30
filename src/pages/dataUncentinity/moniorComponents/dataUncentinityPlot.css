@@ -9,13 +9,21 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 5px;
+    flex-wrap: wrap;
 }
 
 .HeadNameDataUncentinity{
-    width: calc(100% - 100px);
+    width: calc(100% - 120px);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.SliderLocTopDAta{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
 }
 
 .PlotSurroundingsDataUncentinityMain{
@@ -41,7 +49,10 @@
 .KeySectCandleChart{
     padding: 10px;
     border-radius: 10px;
-    padding-right: 20px;   
+    padding-right: 20px;  
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .KeyHeaderCandleChart{
@@ -60,6 +71,7 @@
 .ShapeHolderRowCandleChart{
     height: 25px;
     width: 30px;
+    margin-right: 7px;
     display: flex;
     justify-content: center;
     align-items: center;
