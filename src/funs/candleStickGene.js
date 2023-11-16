@@ -60,8 +60,8 @@ const renderCandlestickChart = (data, containerId, dispVal) => {
       .attr("y", d => y(Math.max(d.open, d.close)))
       .attr("width", x.bandwidth())
       .attr("height", d => Math.abs(y(d.open) - y(d.close)))
-      .attr("fill", "none")  // Set fill to none
-      .attr("stroke", d => d.open > d.close ? "#3D2B1F" : "#3D2B1F") // Set border color
+      .attr("fill", "#ff3636")  // Set fill to none
+      .attr("stroke", d => d.open > d.close ? "#ff3636" : "#ff3636") // Set border color
       .attr("stroke-width", 1);
   
       svg.selectAll(".wick2")
@@ -72,8 +72,45 @@ const renderCandlestickChart = (data, containerId, dispVal) => {
         .attr("x2", d => x(d.date) + x.bandwidth() / 2)
         .attr("y1", d => y(d.high))
         .attr("y2", d => y(d.low))
-        .attr("stroke", d => d.open > d.close ?  "#3D2B1F" : "#3D2B1F"); 
+        .attr("stroke", d => d.open > d.close ?  "#ff3636" : "#ff3636"); 
     }
+
+    // Calculate average value between high and low values
+    const avgHighLow = data[0].map(d => (d.high + d.low) / 2); // Calculate average
+
+    // Create a line for the average between high and low values
+    const lineGenerator = d3.line()
+      .x((d, i) => x(data[0][i].date) + x.bandwidth() / 2)
+      .y(d => y(d));
+
+    if (dispVal === 0 || dispVal === 50) {
+      svg.append("path")
+        .datum(avgHighLow)
+        .attr("class", "average-line")
+        .attr("fill", "none")
+        .attr("stroke", "gold") // Change color as needed
+        .attr("stroke-width", 2)
+        .attr("d", lineGenerator);
+    }
+    
+    // Calculate average value between high and low values
+    const avgHighLow2 = data[1].map(d => (d.high + d.low) / 2); // Calculate average
+
+    // Create a line for the average between high and low values
+    const lineGenerator2 = d3.line()
+      .x((d, i) => x(data[1][i].date) + x.bandwidth() / 2)
+      .y(d => y(d));
+
+    if (dispVal === 100 || dispVal === 50) {
+      svg.append("path")
+        .datum(avgHighLow2)
+        .attr("class", "average-line")
+        .attr("fill", "none")
+        .attr("stroke", "black") // Change color as needed
+        .attr("stroke-width", 2)
+        .attr("d", lineGenerator2);
+    }
+      
     // Add x-axis
     svg.append("g")
       .attr("transform", `translate(0,${height})`)

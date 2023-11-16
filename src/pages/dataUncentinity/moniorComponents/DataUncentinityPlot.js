@@ -127,7 +127,7 @@ function DataUncentinityPlot({
                             </div>
                             <div className="RowKeyTableCandleChart">
                                 <div className="ShapeHolderRowCandleChart">
-                                    <div className="ShapeCandleChart" style={{width: '3px', backgroundColor: '#3D2B1F'}}></div>
+                                    <div className="ShapeCandleChart" style={{width: '3px', backgroundColor: '#ff3636'}}></div>
                                 </div>
                                 <div className="DiscRowCandleChart">
                                     Spatial attention module prediction range
@@ -135,7 +135,7 @@ function DataUncentinityPlot({
                             </div>
                             <div className="RowKeyTableCandleChart">
                                 <div className="ShapeHolderRowCandleChart">
-                                    <div className="ShapeCandleChart" style={{borderRadius: '3px', border: '2px solid #3D2B1F', backgroundColor: 'transparent'}}></div>
+                                    <div className="ShapeCandleChart" style={{borderRadius: '3px', border: '2px solid #ff3636', backgroundColor: '#ff3636'}}></div>
                                 </div>
                                 <div className="DiscRowCandleChart">
                                     Spatial attention module average prediction range

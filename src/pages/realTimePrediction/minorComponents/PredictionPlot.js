@@ -266,7 +266,7 @@ function PredictionPlot({
                                 </span>
                             </button>
                         </div>
-                        <div className="textInfoGraphsSankey">{`${mode1State} Neurons`}</div>
+                        <div className="textInfoGraphsSankey">{`${mode1State} Layers`}</div>
                     </div>
                     <div className="columnButtonsGroup column3" >
                        <div className="buttonHolder">
@@ -281,7 +281,7 @@ function PredictionPlot({
                                 </span>
                             </button>
                         </div>
-                        <div className="textInfoGraphsSankey">{`${mode2State} Neurons`}</div>
+                        <div className="textInfoGraphsSankey">{`${mode2State} Layers`}</div>
                     </div>
                     <div className="columnButtonsGroup column0">
                         
