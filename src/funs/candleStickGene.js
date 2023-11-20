@@ -8,6 +8,7 @@ const renderCandlestickChart = (data, containerId, dispVal) => {
     if (svgWidth > 1000) {
       svgWidth = 1000;
     }
+    const maxWidth = 10;
     const svgHeight = svgWidth*0.43;
     const width = svgWidth - margin.left - margin.right;
     const height = svgHeight - margin.top - margin.bottom;
@@ -28,17 +29,40 @@ const renderCandlestickChart = (data, containerId, dispVal) => {
       .domain([d3.min(data[2], d => d.low - d.low*0.05), d3.max(data[0], d => d.high + d.high*0.05)])
       .nice()
       .range([height, 0]);
+    
+    const defs = svg.append("defs");
+
+    const gradient1 = defs.append("linearGradient")
+      .attr("id", "candlestickGradient1")
+      .attr("gradientUnits", "userSpaceOnUse")
+      .attr("x1", 0).attr("y1", y(0))
+      .attr("x2", 0).attr("y2", y(d3.max(data[0], d => Math.max(d.open, d.close))));
+  
+    gradient1.append("stop").attr("offset", "0%").attr("stop-color", "#7F00FF"); // Start color
+    gradient1.append("stop").attr("offset", "100%").attr("stop-color", "#E6E6FA"); // End color
+    
+      // Gradient for second dataset (data[1])
+    const gradient2 = defs.append("linearGradient")
+        .attr("id", "candlestickGradient2")
+        .attr("gradientUnits", "userSpaceOnUse")
+        .attr("x1", 0).attr("y1", y(0))
+        .attr("x2", 0).attr("y2", y(d3.max(data[1], d => Math.max(d.open, d.close))));
+    
+    gradient2.append("stop").attr("offset", "0%").attr("stop-color", "#90EE90"); // Start color
+    gradient2.append("stop").attr("offset", "100%").attr("stop-color", "#008000"); // End color
   
     if (dispVal === 0 || dispVal === 50) {
       svg.selectAll(".candle")
       .data(data[0])
       .enter().append("rect")
       .attr("class", "candle")
-      .attr("x", d => x(d.date))
+      .attr("x", d => (x(d.date) + x.bandwidth() / 2) -5)
       .attr("y", d => y(Math.max(d.open, d.close)))
-      .attr("width", x.bandwidth())
+      .attr("width", maxWidth)
       .attr("height", d => Math.abs(y(d.open) - y(d.close)))
-      .attr("fill", d => d.open > d.close ? "#61DAFB" : "#61DAFB");
+      .attr("fill", d => d.open > d.close ? "url(#candlestickGradient1)" : "url(#candlestickGradient1)")
+      .attr("stroke-width", 1)
+      .attr("stroke", "#301934");
   
       svg.selectAll(".wick")
         .data(data[0])
@@ -48,7 +72,7 @@ const renderCandlestickChart = (data, containerId, dispVal) => {
         .attr("x2", d => x(d.date) + x.bandwidth() / 2)
         .attr("y1", d => y(d.high))
         .attr("y2", d => y(d.low))
-        .attr("stroke", d => d.open > d.close ?  "#61DAFB" : "#61DAFB");
+        .attr("stroke", d => d.open > d.close ?  "#7F00FF" : "#7F00FF");
     }
     
     if (dispVal === 100 || dispVal === 50) {
@@ -56,13 +80,13 @@ const renderCandlestickChart = (data, containerId, dispVal) => {
       .data(data[1])
       .enter().append("rect")
       .attr("class", "candle")
-      .attr("x", d => x(d.date))
+      .attr("x", d => (x(d.date) + x.bandwidth() / 2) -5)
       .attr("y", d => y(Math.max(d.open, d.close)))
-      .attr("width", x.bandwidth())
+      .attr("width", maxWidth)
       .attr("height", d => Math.abs(y(d.open) - y(d.close)))
-      .attr("fill", "#ff3636")  // Set fill to none
-      .attr("stroke", d => d.open > d.close ? "#ff3636" : "#ff3636") // Set border color
-      .attr("stroke-width", 1);
+      .attr("fill", "url(#candlestickGradient2)")  // Set fill to none
+      .attr("stroke-width", 1)
+      .attr("stroke", "#023020");
   
       svg.selectAll(".wick2")
         .data(data[1])
@@ -72,7 +96,7 @@ const renderCandlestickChart = (data, containerId, dispVal) => {
         .attr("x2", d => x(d.date) + x.bandwidth() / 2)
         .attr("y1", d => y(d.high))
         .attr("y2", d => y(d.low))
-        .attr("stroke", d => d.open > d.close ?  "#ff3636" : "#ff3636"); 
+        .attr("stroke", d => d.open > d.close ?  "#90EE90" : "#90EE90"); 
     }
 
     // Calculate average value between high and low values
@@ -88,7 +112,7 @@ const renderCandlestickChart = (data, containerId, dispVal) => {
         .datum(avgHighLow)
         .attr("class", "average-line")
         .attr("fill", "none")
-        .attr("stroke", "gold") // Change color as needed
+        .attr("stroke", "#7F00FF") // Change color as needed
         .attr("stroke-width", 2)
         .attr("d", lineGenerator);
     }
@@ -106,7 +130,7 @@ const renderCandlestickChart = (data, containerId, dispVal) => {
         .datum(avgHighLow2)
         .attr("class", "average-line")
         .attr("fill", "none")
-        .attr("stroke", "black") // Change color as needed
+        .attr("stroke", "#90EE90") // Change color as needed
         .attr("stroke-width", 2)
         .attr("d", lineGenerator2);
     }
