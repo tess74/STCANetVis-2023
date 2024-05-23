@@ -1,7 +1,7 @@
 # STCANetViz
 
 ## Overview
-STCANetViz is a web-based visualization tool designed to optimize the STCANet model, a deep learning model for ocean wave prediction. STCANet leverages the intricate nesting and coupling of two primary modules: the Spatial module and the Attention temporal module. These form a complex system to forecast oceanic waves with high precision.
+STCANetViz is a web-based visualization tool designed to optimize the STCANet model, a deep learning model for ocean currents prediction. STCANet leverages the intricate nesting and coupling of two primary modules, the Spatial module and the Attention temporal module forming a complex system to forecast oceanic surface currents. 
 
 
 ## Getting Started
